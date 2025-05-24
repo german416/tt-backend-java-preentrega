@@ -149,10 +149,16 @@ public class Menu {
         do {
             option = chooseOption();
 
-            if(indexExist(option)) {
-                selectedOption = option;
-            }
-        } while(!indexExist(option));
+    /**
+     * Imprime en la consola el contenido del menú: título, cuerpo, opciones y footer.
+     */
+    private void print() {
+        System.out.println(title);
+        System.out.println(body);
+        for (int i = 0; i < options.size(); i++) {
+            System.out.println(options.get(i).getLabel());
+        }
+        System.out.println(footer);
     }
     //#endregion
 }
