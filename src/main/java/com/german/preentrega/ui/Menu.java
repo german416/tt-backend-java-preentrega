@@ -20,8 +20,9 @@ public class Menu {
     public Menu() {
         options = new ArrayList<Option>();
         selectedOption = null;
-        title = null;
-        body = null;
+        title = "";
+        body = "";
+        footer = "";
     }
 
     public Menu(String title, String body, String footer) {
@@ -37,15 +38,15 @@ public class Menu {
         selectedOption = null;
         this.title = title;
         this.body = body;
-        this.footer = null;
+        this.footer = "";
     }
 
     public Menu(String title) {
         options = new ArrayList<Option>();
         selectedOption = null;
         this.title = title;
-        body = null;
-        footer = null;
+        body = "";
+        footer = "";
     }
     //#endregion
 
