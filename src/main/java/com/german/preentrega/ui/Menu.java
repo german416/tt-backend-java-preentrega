@@ -62,11 +62,11 @@ public class Menu {
      * @param index El índice único que identifica la opción. No puede ser {@code null}.
      * @throws DuplicateIndexException Si el índice ya existe en la lista de opciones.
      */
-    public void addOption(String message, char index) throws Exception {
+    public void addOption(String message, Character index, Action action) throws Exception {
         if(indexExist(index)) {
             throw new DuplicateIndexException();
         }
-        Option newOption = new Option(message, index);
+        Option newOption = new Option(message, index, action);
         options.add(newOption);
     }
 

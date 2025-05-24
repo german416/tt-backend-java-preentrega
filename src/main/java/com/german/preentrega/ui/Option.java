@@ -3,10 +3,12 @@ package com.german.preentrega.ui;
 public class Option {
     private String message;
     private Character index;
+    private Action action;
 
-    public Option(String message, Character index) {
+    public Option(String message, Character index, Action action) {
         this.message = message;
         this.index = index;
+        this.action = action;
     }
 
     public String getMessage() {
@@ -29,5 +31,9 @@ public class Option {
         String result;
         result = "[" + index + "] " + message;
         return result;
+    }
+
+    public void run() {
+        action.execute();
     }
 }
