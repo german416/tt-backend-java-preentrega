@@ -7,13 +7,12 @@ import java.util.Scanner;
 
 public class Menu {
     //#region ATRIBUTOS
+    private final static Scanner scanner = new Scanner(System.in);
     private final ArrayList<Option> options;
     private final String title;
     private final String body;
     private String footer;
-    private Character selectedOption;
-
-    // @todo: poner escaner estatico
+    private Option selectedOption;
     //#endregion
 
     //#region CONSTRUCTORES
@@ -70,21 +69,10 @@ public class Menu {
         options.add(newOption);
     }
 
-    /**
-     * Imprime en la consola el contenido del menú: título, cuerpo, opciones y footer.
-     */
-    public void print() {
-        System.out.println(title);
-        System.out.println(body);
-        for (int i = 0; i < options.size(); i++) {
-            System.out.println(options.get(i).getLabel());
-        }
-        System.out.println(footer);
-    }
-
     public void run() {
         print();
-        chooseValidOption();
+        chooseOption();
+        selectedOption.run();
     }
     //#endregion
 
@@ -127,27 +115,32 @@ public class Menu {
     }
 
     /**
-     * Solicita el ingreso de una opción por teclado y guarda la selección.
-     * <p>
-     * Lee un único carácter de la entrada estándar, lo convierte a minúscula
-     * y lo almacena en el atributo privado {@code selectedOption}.
-     * </p>
-     *
-     * @return el carácter correspondiente a la opción seleccionada por el usuario.
+     * Solicita la selección de una opción del menú, busca el objeto <code>option</code> asociado
+     * a la selección y lo guarda en la propiedad <code>selectedOption</code>.
      */
-    private Character chooseOption() {
-        Scanner scanner = new Scanner(System.in);
-        selectedOption = scanner.next().toLowerCase().charAt(0);
-        // scanner.close(); // No lo cierro para evitar cerrar System.in
+    private void chooseOption() {
+        Character input;
+        do {
+            input = scanner.next().toLowerCase().charAt(0);
 
-        return selectedOption;
+            if(indexExist(input)) {
+                selectedOption = getOptionByIndex(input);
+                break;
+            }
+        } while(!indexExist(input) && selectedOption == null);
     }
 
-    private void chooseValidOption() {
-        Character option;
+    private Option getOptionByIndex(Character index) {
+        Option result = null;
 
-        do {
-            option = chooseOption();
+        for(Option option : options) {
+            if(option.getIndex() == index) {
+                result = option;
+            }
+        }
+
+        return result;
+    }
 
     /**
      * Imprime en la consola el contenido del menú: título, cuerpo, opciones y footer.
