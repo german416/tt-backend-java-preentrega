@@ -7,7 +7,7 @@ public class Product {
     private String name;
     private double price;
     private int stock;
-    private int id;
+    private final int id;
 
     private static int count = 0;
     //#endregion
