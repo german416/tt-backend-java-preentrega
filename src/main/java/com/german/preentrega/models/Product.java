@@ -3,13 +3,16 @@ package com.german.preentrega.models;
 import com.german.preentrega.exceptions.PriceCanNotBeZeroOrLessException;
 
 public class Product {
+    //#region ATRIBUTOS
     private String name;
     private double price;
     private int stock;
     private int id;
 
     private static int count = 0;
+    //#endregion
 
+    //#region CONSTRUCTORES
     public Product() {
         id = ++count;
     }
@@ -21,7 +24,9 @@ public class Product {
         this.price = price;
         this.stock = stock;
     }
+    //#endregion
 
+    //#region GETTERS & SETTERS
     public String getName() {
         return name;
     }
@@ -52,4 +57,5 @@ public class Product {
     public int getId() {
         return id;
     }
+    //#endregion
 }
