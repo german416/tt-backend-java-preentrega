@@ -6,8 +6,17 @@ public class Product {
     private String name;
     private double price;
     private int stock;
+    private int id;
+
+    private static int count = 0;
+
+    public Product() {
+        id = ++count;
+    }
 
     public Product(String name, double price, int stock) {
+        id = ++count;
+
         this.name = name;
         this.price = price;
         this.stock = stock;
@@ -38,5 +47,9 @@ public class Product {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public int getId() {
+        return id;
     }
 }
