@@ -58,4 +58,13 @@ public class Product {
         return id;
     }
     //#endregion
+
+    //#region METODOS PUBLICOS
+    public void print() {
+        System.out.println("ID:     " + id);
+        System.out.println("NOMBRE: " + name);
+        System.out.println("PRECIO: " + price);
+        System.out.println("STOCK:  " + stock);
+    }
+    //#endregion
 }
