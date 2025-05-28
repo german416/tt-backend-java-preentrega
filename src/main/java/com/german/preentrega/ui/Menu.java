@@ -70,9 +70,16 @@ public class Menu {
     }
 
     public void run() {
-        print();
-        chooseOption();
-        selectedOption.run();
+        while(true) {
+            print();
+            chooseOption();
+            selectedOption.run();
+            selectedOption = null;
+        }
+    }
+
+    public void quit() {
+        System.exit(0);
     }
     //#endregion
 
