@@ -158,7 +158,7 @@ public class Menu {
         for (int i = 0; i < options.size(); i++) {
             System.out.println(options.get(i).getLabel());
         }
-        System.out.println(footer);
+        System.out.print(footer);
     }
     //#endregion
 }

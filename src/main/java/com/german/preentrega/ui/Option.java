@@ -29,7 +29,7 @@ public class Option {
 
     public String getLabel() {
         String result;
-        result = "[" + index + "] " + message;
+        result = index + ". " + message;
         return result;
     }
 
