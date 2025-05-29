@@ -28,15 +28,8 @@ public class ProductService {
         }
     }
 
-    public void printList() {
-        ArrayList<Product> products = repository.getAll();
-
-        System.out.printf("%2s\t%-30s\t%10s\t%6s%n", "ID", "NOMBRE", "PRECIO", "STOCK");
-        System.out.println("--------------------------------------------------------");
-
-        for (Product p : products) {
-            System.out.printf("%2d\t%-30s\t%10.2f\t%6d%n", p.getId(), p.getName(), p.getPrice(), p.getStock());
-        }
+    public ArrayList<Product> getAll() {
+        return repository.getAll();
     }
 
     public void add(Product product) {
