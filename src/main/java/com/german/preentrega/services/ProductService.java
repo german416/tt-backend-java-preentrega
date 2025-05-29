@@ -43,7 +43,18 @@ public class ProductService {
         repository.add(product);
     }
 
-    public void edit(Product product, Product data) {}
+    public void edit(int id, Product data) throws Exception {
+        ArrayList<Product> products = repository.getAll();
+
+        Product product = products.stream()
+            .filter(p -> p.getId() == id)
+            .findFirst()
+            .orElse(null);
+
+        int index = products.indexOf(product);
+
+        repository.edit(index, data);
+    }
 
     public boolean delete(int id) {
         return repository.delete(id);
