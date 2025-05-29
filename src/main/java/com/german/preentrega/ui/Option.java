@@ -33,7 +33,7 @@ public class Option {
         return result;
     }
 
-    public void run() {
+    public void run() throws Exception {
         action.execute();
     }
 }

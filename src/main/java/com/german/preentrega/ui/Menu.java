@@ -69,7 +69,7 @@ public class Menu {
         options.add(newOption);
     }
 
-    public void run() {
+    public void run() throws Exception {
         while(true) {
             print();
             chooseOption();
