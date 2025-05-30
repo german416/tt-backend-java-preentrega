@@ -1,9 +1,11 @@
 package com.german.preentrega.services;
 
+import com.german.preentrega.exceptions.InvalidIdException;
 import com.german.preentrega.models.Product;
 import com.german.preentrega.repositories.ProductRepository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ProductService {
@@ -32,6 +34,13 @@ public class ProductService {
         return repository.getAll();
     }
 
+    public Product get(int id) throws InvalidIdException {
+        if (!idExist(id)) {
+            throw new InvalidIdException();
+        }
+        return repository.get(id);
+    }
+
     public void add(Product product) {
         repository.add(product);
     }
@@ -51,5 +60,10 @@ public class ProductService {
 
     public boolean delete(int id) {
         return repository.delete(id);
+    }
+
+    public boolean idExist(int id) {
+        int[] idList = repository.getIdList();
+        return Arrays.stream(idList).anyMatch(n -> n == id);
     }
 }
