@@ -58,7 +58,11 @@ public class ProductService {
         repository.edit(index, data);
     }
 
-    public boolean delete(int id) {
+    public boolean delete(int id) throws InvalidIdException {
+        if(!idExist(id)) {
+            throw new InvalidIdException();
+        }
+
         return repository.delete(id);
     }
 
