@@ -1,5 +1,7 @@
 package com.german.preentrega.repositories;
 
+import com.german.preentrega.exceptions.InvalidIdException;
+import com.german.preentrega.exceptions.ProductNotFoundException;
 import com.german.preentrega.models.Product;
 
 import java.util.ArrayList;
@@ -17,6 +19,30 @@ public class ProductRepository {
      */
     public ArrayList<Product> getAll() {
         return new ArrayList<Product>(products);
+    }
+
+    public Product get(int id) throws InvalidIdException {
+        Product product = products
+            .stream()
+            .filter(p -> p.getId() == id)
+            .findFirst()
+            .orElse(null);
+        if(product == null) {
+            throw new InvalidIdException();
+        }
+        return product;
+    }
+
+    public Product get(String name) throws ProductNotFoundException {
+        Product product = products
+            .stream()
+            .filter(p -> p.getName().toLowerCase().equals(name.toLowerCase()))
+            .findFirst()
+            .orElse(null);
+        if(product == null) {
+            throw new ProductNotFoundException();
+        }
+        return product;
     }
 
     public void add(Product product) {
