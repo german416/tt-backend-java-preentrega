@@ -61,10 +61,11 @@ public class Product {
 
     //#region METODOS PUBLICOS
     public void print() {
-        System.out.println("ID:     " + id);
-        System.out.println("NOMBRE: " + name);
-        System.out.println("PRECIO: " + price);
-        System.out.println("STOCK:  " + stock);
+        System.out.println("┌──────────────────────────────────────────────────────────────┐");
+        System.out.printf("│ %2s\t%-30s\t%10s\t%10s │%n", "ID", "NOMBRE", "PRECIO", "STOCK");
+        System.out.println("├──────────────────────────────────────────────────────────────┤");
+        System.out.printf("│ %2d\t%-30s\t%10.2f\t%10d │%n", id, name, price, stock);
+        System.out.println("└──────────────────────────────────────────────────────────────┘");
     }
     //#endregion
 }
