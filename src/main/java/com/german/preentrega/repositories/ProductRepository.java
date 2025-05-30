@@ -37,4 +37,8 @@ public class ProductRepository {
     public boolean delete(int id) {
         return products.removeIf(p -> p.getId() == id);
     }
+
+    public int[] getIdList() {
+        return getAll().stream().mapToInt(Product::getId).toArray();
+    }
 }
