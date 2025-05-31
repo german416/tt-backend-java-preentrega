@@ -1,5 +1,6 @@
 package com.german.preentrega.ui.views;
 
+import com.german.preentrega.exceptions.InvalidIdException;
 import com.german.preentrega.models.Product;
 import com.german.preentrega.services.ProductService;
 
@@ -12,20 +13,31 @@ public class DeleteProductView {
         this.service = service;
     }
 
-    public void run() {
-        int id = showForm();
-        service.delete(id);
+    public void run() throws Exception {
+        showForm();
     }
 
-    private int showForm() {
+    private void showForm() throws InvalidIdException {
         Scanner scanner = new Scanner(System.in);
-
         System.out.print("¿Qué producto desea eliminar? Ingrese su id: ");
         int id = scanner.nextInt();
 
-        // @todo: validar la existencia del id
-        // @todo: confirmar la acción de borrado.
+        try {
+            Product product = service.get(id);
+            Character selection;
+            System.out.println("");
+            product.print();
+            do {
+                System.out.print("¿Seguro que desea borrar este producto? Está acción no se puede deshacer (S/N): ");
+                selection = scanner.next().charAt(0);
+            } while (selection != 's' && selection != 'n');
 
-        return id;
+            if(selection == 's') {
+                service.delete(id);
+                System.out.print("El producto ha sido eliminado.");
+            }
+        } catch (InvalidIdException e) {
+            System.out.print("El id no es válido");
+        }
     }
 }
