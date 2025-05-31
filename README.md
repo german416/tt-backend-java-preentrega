@@ -4,7 +4,7 @@ Diseñar una aplicación en Java que permita registrar, mostrar y gestionar prod
 
 # Requisitos
 
-## Ingreso de productos
+## ✅Ingreso de productos
 
 ### El sistema debe permitir agregar productos con la siguiente información mínima:
 
@@ -12,20 +12,20 @@ Diseñar una aplicación en Java que permita registrar, mostrar y gestionar prod
 - Precio (double, puede tener decimales).
 - Cantidad en Stock (int).
 
-### Estos productos deben almacenarse en una colección (por ejemplo, ArrayList<Producto>).
+**Estos productos deben almacenarse en una colección (por ejemplo, ArrayList<Producto>).**
 
-## Visualización de productos
+## ✅Visualización de productos
 
 - Debe haber una funcionalidad que liste en pantalla todos los productos registrados, mostrando su ID (o posición), Nombre, Precio y Cantidad en Stock.
 - El ID puede ser autogenerado (por ejemplo, un contador estático) o la posición en la lista.
 
-## Búsqueda y actualización de productos
+## 🟡Búsqueda y actualización de productos
 
 - El sistema permitirá buscar un producto por su nombre o ID.
 - Si se encuentra el producto, se mostrará su información completa.
 - Opcionalmente, se podrá actualizar alguno de sus datos (precio o stock), validando que los valores sean coherentes (por ejemplo, que el stock no sea negativo).
 
-## Eliminación de productos
+## ✅Eliminación de productos
 
 - El sistema debe permitir eliminar un producto de la lista, identificándolo por su ID o posición en la colección.
 - Antes de eliminar, el sistema podría pedir confirmación (opcionales).
