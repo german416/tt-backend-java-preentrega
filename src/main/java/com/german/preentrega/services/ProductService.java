@@ -63,6 +63,10 @@ public class ProductService {
             .findFirst()
             .orElse(null);
 
+        // @todo: evaluar si el resultado es null
+        // @todo: manejar excepción si el id está fuera de rango
+        // @todo: convertir la búsqueda en un metodo aparte, find()
+
         int index = products.indexOf(product);
 
         repository.edit(index, data);
