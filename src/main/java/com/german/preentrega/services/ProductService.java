@@ -1,6 +1,8 @@
 package com.german.preentrega.services;
 
 import com.german.preentrega.exceptions.InvalidIdException;
+import com.german.preentrega.exceptions.InvalidNameException;
+import com.german.preentrega.exceptions.ProductNotFoundException;
 import com.german.preentrega.models.Product;
 import com.german.preentrega.repositories.ProductRepository;
 
@@ -39,6 +41,14 @@ public class ProductService {
             throw new InvalidIdException();
         }
         return repository.get(id);
+    }
+
+    public Product get(String name) throws InvalidNameException, ProductNotFoundException {
+        if (name.equals("") || name.length() < 2) {
+            throw new InvalidNameException();
+        }
+
+        return repository.get(name);
     }
 
     public void add(Product product) {
