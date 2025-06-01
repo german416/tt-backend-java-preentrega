@@ -36,7 +36,7 @@ public class ProductRepository {
     public Product get(String name) throws ProductNotFoundException {
         Product product = products
             .stream()
-            .filter(p -> p.getName().toLowerCase().equals(name.toLowerCase()))
+            .filter(p -> p.getName().toLowerCase().contains(name.toLowerCase()))
             .findFirst()
             .orElse(null);
         if(product == null) {
