@@ -5,6 +5,7 @@ import com.german.preentrega.services.ProductService;
 import com.german.preentrega.ui.Menu;
 import com.german.preentrega.ui.views.AddProductView;
 import com.german.preentrega.ui.views.DeleteProductView;
+import com.german.preentrega.ui.views.FindProductView;
 import com.german.preentrega.ui.views.ProductListView;
 
 import java.util.Scanner;
@@ -23,6 +24,7 @@ public class Main {
         ProductListView productListView = new ProductListView(productService);
         AddProductView addProductView = new AddProductView(productService);
         DeleteProductView deleteProductView = new DeleteProductView(productService);
+        FindProductView findProductView = new FindProductView(productService);
 
         productService.populateRepo();
 
@@ -40,8 +42,7 @@ public class Main {
 
         // 3 - BUSCAR / ACTUALIZAR PRODUCTOS
         menu.addOption("Buscar/Actualizar producto", '3', () ->{
-            Product p = new Product("Maple de huevos Marolio", 9000.00, 23);
-            productService.edit(2, p);
+            findProductView.run();
             waitForEnter();
         });
 
