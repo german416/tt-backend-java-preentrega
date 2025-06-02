@@ -10,9 +10,11 @@ import java.util.Scanner;
 
 public class FindProductView {
     ProductService service;
+    private final Scanner scanner;
 
-    public FindProductView(ProductService service) {
+    public FindProductView(Scanner scanner, ProductService service) {
         this.service = service;
+        this.scanner = scanner;
     }
 
     public void run() throws Exception {
@@ -23,7 +25,6 @@ public class FindProductView {
         //@todo refactorizar esto...
 
         Product product = null;
-        Scanner scanner = new Scanner(System.in);
 
         System.out.println("¿Qué producto está buscando?: ");
         String name = scanner.nextLine();

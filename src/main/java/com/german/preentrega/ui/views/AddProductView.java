@@ -7,9 +7,11 @@ import java.util.Scanner;
 
 public class AddProductView {
     private final ProductService service;
+    private final Scanner scanner;
 
-    public AddProductView(ProductService service) {
+    public AddProductView(Scanner scanner, ProductService service) {
         this.service = service;
+        this.scanner = scanner;
     }
 
     public void run() {
@@ -18,8 +20,6 @@ public class AddProductView {
     }
 
     private Product showForm() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.print("Nombre: ");
         String name = scanner.nextLine();
 

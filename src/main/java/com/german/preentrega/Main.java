@@ -1,6 +1,5 @@
 package com.german.preentrega;
 
-import com.german.preentrega.models.Product;
 import com.german.preentrega.services.ProductService;
 import com.german.preentrega.ui.Menu;
 import com.german.preentrega.ui.views.AddProductView;
@@ -14,17 +13,18 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws Exception {
-        // Instancio el servicio.
+        // Instancio las dependencias de las vistas...
         ProductService productService = new ProductService();
+        Scanner scanner = new Scanner(System.in);
 
         // Instancio el menu.
         Menu menu = new Menu("SISTEMA DE GESTIÓN - TECHLAB", "", "\nSelecciona una opción: ");
 
         // Instancio las vistas.
         ProductListView productListView = new ProductListView(productService);
-        AddProductView addProductView = new AddProductView(productService);
-        DeleteProductView deleteProductView = new DeleteProductView(productService);
-        FindProductView findProductView = new FindProductView(productService);
+        AddProductView addProductView = new AddProductView(scanner, productService);
+        DeleteProductView deleteProductView = new DeleteProductView(scanner, productService);
+        FindProductView findProductView = new FindProductView(scanner, productService);
 
         productService.populateRepo();
 

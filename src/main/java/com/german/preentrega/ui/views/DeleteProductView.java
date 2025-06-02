@@ -8,9 +8,11 @@ import java.util.Scanner;
 
 public class DeleteProductView {
     private final ProductService service;
+    private final Scanner scanner;
 
-    public DeleteProductView(ProductService service) {
+    public DeleteProductView(Scanner scanner, ProductService service) {
         this.service = service;
+        this.scanner = scanner;
     }
 
     public void run() throws Exception {
@@ -18,7 +20,6 @@ public class DeleteProductView {
     }
 
     private void showForm() throws InvalidIdException {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("¿Qué producto desea eliminar? Ingrese su id: ");
         int id = scanner.nextInt();
 
