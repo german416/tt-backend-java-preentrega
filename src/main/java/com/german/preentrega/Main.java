@@ -1,11 +1,9 @@
 package com.german.preentrega;
 
+import com.german.preentrega.services.OrderService;
 import com.german.preentrega.services.ProductService;
 import com.german.preentrega.ui.Menu;
-import com.german.preentrega.ui.views.AddProductView;
-import com.german.preentrega.ui.views.DeleteProductView;
-import com.german.preentrega.ui.views.FindProductView;
-import com.german.preentrega.ui.views.ProductListView;
+import com.german.preentrega.ui.views.*;
 
 import java.util.Scanner;
 
@@ -15,6 +13,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // Instancio las dependencias de las vistas...
         ProductService productService = new ProductService();
+        OrderService orderService = new OrderService();
         Scanner scanner = new Scanner(System.in);
 
         // Instancio el menu.
@@ -25,6 +24,8 @@ public class Main {
         AddProductView addProductView = new AddProductView(scanner, productService);
         DeleteProductView deleteProductView = new DeleteProductView(scanner, productService);
         FindProductView findProductView = new FindProductView(scanner, productService);
+        OrderListView orderListView = new OrderListView(scanner, orderService);
+        AddOrderView addOrderView = new AddOrderView(scanner, orderService, productService);
 
         productService.populateRepo();
 
@@ -52,8 +53,17 @@ public class Main {
             waitForEnter();
         });
 
-        menu.addOption("Crear un pedido", '5', () -> System.out.println("Seleccionaste la opción 5"));
-        menu.addOption("Listar pedidos", '6', () -> System.out.println("Seleccionaste la opción 6"));
+        // 5 - CREAR PEDIDO
+        menu.addOption("Crear un pedido", '5', () -> {
+            addOrderView.run();
+            waitForEnter();
+        });
+
+        // 6 - LISTAR PEDIDOS
+        menu.addOption("Listar pedidos", '6', () -> {
+            orderListView.run();
+            waitForEnter();
+        });
 
         // 7 - SALIR
         menu.addOption("Salir", '7', menu::quit);
