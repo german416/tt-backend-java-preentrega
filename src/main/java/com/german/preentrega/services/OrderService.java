@@ -1,13 +1,9 @@
 package com.german.preentrega.services;
 
-import com.german.preentrega.exceptions.NullObjectException;
-import com.german.preentrega.exceptions.OutOfStockException;
-import com.german.preentrega.exceptions.ProductNotFoundException;
 import com.german.preentrega.models.Order;
 import com.german.preentrega.models.OrderItem;
 import com.german.preentrega.models.Product;
 import com.german.preentrega.repositories.OrderRepository;
-import com.german.preentrega.repositories.ProductRepository;
 
 import java.util.ArrayList;
 

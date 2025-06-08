@@ -1,9 +1,5 @@
 package com.german.preentrega.models;
 
-
-import com.german.preentrega.exceptions.InvalidIdException;
-import com.german.preentrega.exceptions.NullObjectException;
-
 import java.util.ArrayList;
 
 public class Order {
