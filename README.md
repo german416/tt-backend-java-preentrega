@@ -30,7 +30,7 @@ Diseñar una aplicación en Java que permita registrar, mostrar y gestionar prod
 - El sistema debe permitir eliminar un producto de la lista, identificándolo por su ID o posición en la colección.
 - Antes de eliminar, el sistema podría pedir confirmación (opcionales).
 
-## Creación de pedidos
+## 🟡 Creación de pedidos
 
 - Además de manejar productos, se sugiere agregar la clase Pedido (o Orden) que contenga:
   - Una lista de productos asociados.
