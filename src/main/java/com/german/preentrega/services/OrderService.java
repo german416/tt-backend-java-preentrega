@@ -11,11 +11,16 @@ public class OrderService {
     private final OrderRepository orderRepository = new OrderRepository();
 
     public ArrayList<Order> getAll() { return orderRepository.getAll(); }
-    public int newOrder() {
-        Order order = new Order();
-        orderRepository.add(order);
 
-        return order.getId();
+//    public int newOrder() {
+//        Order order = new Order();
+//        orderRepository.add(order);
+//
+//        return order.getId();
+//    }
+
+    public void add(Order order) {
+        orderRepository.add(order);
     }
 
 //    public void addItem(Order order, OrderItem item) throws NullObjectException, ProductNotFoundException, OutOfStockException {
