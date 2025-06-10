@@ -4,7 +4,7 @@ Diseñar una aplicación en Java que permita registrar, mostrar y gestionar prod
 
 # Requisitos
 
-## ✅Ingreso de productos
+## ✅ Ingreso de productos
 
 ### El sistema debe permitir agregar productos con la siguiente información mínima:
 
@@ -14,18 +14,18 @@ Diseñar una aplicación en Java que permita registrar, mostrar y gestionar prod
 
 **Estos productos deben almacenarse en una colección (por ejemplo, ArrayList<Producto>).**
 
-## ✅Visualización de productos
+## ✅ Visualización de productos
 
 - ✅ Debe haber una funcionalidad que liste en pantalla todos los productos registrados, mostrando su ID (o posición), Nombre, Precio y Cantidad en Stock.
 - ✅ El ID puede ser autogenerado (por ejemplo, un contador estático) o la posición en la lista.
 
-## ✅Búsqueda y actualización de productos
+## 🟠 Búsqueda y actualización de productos
 
 - ✅ El sistema permitirá buscar un producto por su nombre o ID.
 - ✅ Si se encuentra el producto, se mostrará su información completa.
 - ❓ Opcionalmente, se podrá actualizar alguno de sus datos (precio o stock), validando que los valores sean coherentes (por ejemplo, que el stock no sea negativo).
 
-## ✅Eliminación de productos
+## 🟠 Eliminación de productos
 
 - ✅ El sistema debe permitir eliminar un producto de la lista, identificándolo por su ID o posición en la colección.
 - ❓ Antes de eliminar, el sistema podría pedir confirmación (opcionales).
@@ -58,7 +58,7 @@ El programa presentará un menú con opciones, por ejemplo:
 
 # Consideraciones
 
-## ✅ Tipos de datos y variables
+## 🟠 Tipos de datos y variables
 
 Emplear variables de tipo 
 - ✅ int (para cantidades e IDs), 
@@ -68,13 +68,14 @@ Emplear variables de tipo
 
 ❓ Asegurate de usar operadores aritméticos, lógicos y relacionales en las funciones de cálculo y validación.
 
-## Colecciones (Arrays, Listas)
+## ✅ Colecciones (Arrays, Listas)
 
-✅ Para manejar los productos, se sugiere un ArrayList<Producto>.
-Para manejar los productos dentro de un pedido, podría usarse otra lista, por ejemplo ArrayList<LineaPedido>.
-O bien, un Map<Integer, Integer> si querés asociar ID de producto con cantidad solicitada (detalles a tu elección).
+- ✅ Para manejar los productos, se sugiere un ArrayList<Producto>.
+- ✅ Para manejar los productos dentro de un pedido, podría usarse otra lista, 
+  - ✅ un ArrayList<LineaPedido>, o
+  - ❌ un Map<Integer, Integer> si quieres asociar ID de producto con cantidad solicitada
 
-## POO y Colaboración de Clases
+## ✅ POO y Colaboración de Clases
 
 - ✅ Clase Producto: con atributos id, nombre, precio, stock, getters y setters.
 - ✅ Clase Pedido (u Orden): con atributos id, lista de productos/lineas, metodos para calcular total, etc.
@@ -84,7 +85,7 @@ O bien, un Map<Integer, Integer> si querés asociar ID de producto con cantidad 
 
 ❌ Si deseás, podés crear subclases de Producto (por ejemplo, Bebida, Comida) con atributos específicos (fecha de vencimiento, volumen en litros, etc.).
 
-Mostrar cómo el polimorfismo ayuda a tratar distintos productos de forma genérica.
+❌ Mostrar cómo el polimorfismo ayuda a tratar distintos productos de forma genérica.
 
 ## ✅ Excepciones
 
