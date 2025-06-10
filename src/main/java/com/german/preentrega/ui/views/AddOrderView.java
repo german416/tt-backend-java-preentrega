@@ -1,10 +1,14 @@
 package com.german.preentrega.ui.views;
 
+import com.german.preentrega.exceptions.InvalidIdException;
 import com.german.preentrega.exceptions.NullObjectException;
 import com.german.preentrega.models.OrderItem;
+import com.german.preentrega.models.Product;
+import com.german.preentrega.models.Order;
 import com.german.preentrega.services.OrderService;
 import com.german.preentrega.services.ProductService;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddOrderView {
@@ -18,34 +22,60 @@ public class AddOrderView {
         this.scanner = scanner;
     }
 
-    public void run() throws NullObjectException {
+    public void run() throws NullObjectException, InvalidIdException {
         showForm();
     }
 
-    private void showForm() throws NullObjectException {
-        OrderItem item = new OrderItem();
+    private void showForm() throws NullObjectException, InvalidIdException {
+        ArrayList<OrderItem> itemList = new ArrayList<OrderItem>();
+        productService.print();
+        OrderItem item;
+
+        do {
+            item = getItem();
+            if(item != null) {
+                itemList.add(item);
+            }
+        } while (item != null);
+
+        if(itemList.size() > 0) {
+            Order order = new Order(itemList);
+            orderService.add(order);
+        }
+    }
+
+    private OrderItem getItem() throws NullObjectException, InvalidIdException {
+        OrderItem item = null;
+        Product product = null;
+
         int productId;
         int productQuantity;
         boolean isValidStock;
 
-        productService.print();
-
         do {
             System.out.print("Ingrese el id del producto que desea comprar (0, para finalizar): ");
             productId = scanner.nextInt();
+
+            if(productId == 0) {
+                return item;
+            }
+
         } while(!productService.idExist(productId));
+
+        product = productService.get(productId);
 
         do {
             System.out.print("Ingrese la cantidad que desea comprar: ");
             productQuantity = scanner.nextInt();
-            isValidStock = productService.validStock(productId, productQuantity);
+            isValidStock = product.getStock() >= productQuantity;
 
             if(!isValidStock) {
                 System.out.print("No tengo tantas unidades de este producto.");
             }
         } while(!isValidStock);
 
+        item = new OrderItem(product.getName(), product.getPrice(), productQuantity);
 
-        System.out.printf("Eligió el id %d y la cantidad %d", productId, productQuantity);
+        return item;
     }
 }
