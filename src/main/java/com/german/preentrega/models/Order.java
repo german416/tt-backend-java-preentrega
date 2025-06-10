@@ -5,6 +5,11 @@ import java.util.ArrayList;
 public class Order {
     //#region ATRIBUTOS
     ArrayList<OrderItem> itemList = new ArrayList<OrderItem>();
+
+    public ArrayList<OrderItem> getItemList() {
+        return itemList;
+    }
+
     private int id;
     private static int count = 0;
     //#endregion
