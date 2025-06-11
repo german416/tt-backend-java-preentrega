@@ -23,24 +23,25 @@ Diseñar una aplicación en Java que permita registrar, mostrar y gestionar prod
 
 - ✅ El sistema permitirá buscar un producto por su nombre o ID.
 - ✅ Si se encuentra el producto, se mostrará su información completa.
-- ❓ Opcionalmente, se podrá actualizar alguno de sus datos (precio o stock), validando que los valores sean coherentes (por ejemplo, que el stock no sea negativo).
+- ✅ Opcionalmente, se podrá actualizar alguno de sus datos (precio o stock), 
+- ❌ validando que los valores sean coherentes (por ejemplo, que el stock no sea negativo).
 
-## 🟠 Eliminación de productos
+## ✅ Eliminación de productos
 
 - ✅ El sistema debe permitir eliminar un producto de la lista, identificándolo por su ID o posición en la colección.
-- ❓ Antes de eliminar, el sistema podría pedir confirmación (opcionales).
+- ✅ Antes de eliminar, el sistema podría pedir confirmación (opcionales).
 
-## 🟡 Creación de pedidos
+## ✅ Creación de pedidos
 
 - Además de manejar productos, se sugiere agregar la clase Pedido (o Orden) que contenga:
-  - ❌ Una lista de productos asociados.
+  - 🟡 Una lista de productos asociados.
   - ✅ Cantidad deseada de cada producto (por ejemplo, usando un objeto intermedio LineaPedido o similar).
-- El sistema debe permitir crear un pedido nuevo:
+- ✅ El sistema debe permitir crear un pedido nuevo:
   - ✅ Solicitar al usuario qué productos desea y en qué cantidad 
-  - ❌ validar que haya suficiente stock
+  - ✅ validar que haya suficiente stock
   - ✅ Calcular el costo total (sumando precio \* cantidad de cada producto).
-  - ❌ Disminuir el stock de cada producto si el pedido se confirma.
-- Debe haber una funcionalidad para mostrar los pedidos realizados y su costo total, así como la lista de productos asociados.
+  - ✅ Disminuir el stock de cada producto si el pedido se confirma.
+- ✅ Debe haber una funcionalidad para mostrar los pedidos realizados y su costo total, así como la lista de productos asociados.
 
 ## ✅ Menú principal interactivo
 
@@ -58,7 +59,7 @@ El programa presentará un menú con opciones, por ejemplo:
 
 # Consideraciones
 
-## 🟠 Tipos de datos y variables
+## ✅ Tipos de datos y variables
 
 Emplear variables de tipo 
 - ✅ int (para cantidades e IDs), 
@@ -66,7 +67,7 @@ Emplear variables de tipo
 - ✅ String (para nombres/descripciones), 
 - ✅ y boolean si fuera necesario.
 
-❓ Asegurate de usar operadores aritméticos, lógicos y relacionales en las funciones de cálculo y validación.
+✅ Asegurate de usar operadores aritméticos, lógicos y relacionales en las funciones de cálculo y validación.
 
 ## ✅ Colecciones (Arrays, Listas)
 
