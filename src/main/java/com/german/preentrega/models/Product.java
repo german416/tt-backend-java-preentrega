@@ -39,7 +39,7 @@ public class Product {
         return price;
     }
 
-    public void setPrice(double price) throws Exception {
+    public void setPrice(double price) throws PriceCanNotBeZeroOrLessException {
         if(price <= 0) {
             throw new PriceCanNotBeZeroOrLessException();
         }

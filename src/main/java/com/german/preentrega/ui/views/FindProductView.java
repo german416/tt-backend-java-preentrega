@@ -1,8 +1,6 @@
 package com.german.preentrega.ui.views;
 
-import com.german.preentrega.exceptions.InvalidIdException;
-import com.german.preentrega.exceptions.InvalidNameException;
-import com.german.preentrega.exceptions.ProductNotFoundException;
+import com.german.preentrega.exceptions.*;
 import com.german.preentrega.models.Product;
 import com.german.preentrega.services.ProductService;
 
@@ -21,7 +19,7 @@ public class FindProductView {
         showForm();
     }
 
-    public void showForm() throws Exception {
+    public void showForm() {
         //@todo refactorizar esto...
 
         Product product = null;
@@ -47,29 +45,39 @@ public class FindProductView {
             }
         }
 
-        if(product != null) {
-            product.print();
-            do {
-                System.out.print("Para actualizar este producto presiones [E], o [F] para finalizar: ");
-                input = scanner.nextLine();
-                selection = input.toLowerCase().charAt(0);
+        try {
+            if(product != null) {
+                product.print();
+                do {
+                    System.out.print("Para actualizar este producto presiones [E], o [F] para finalizar: ");
+                    input = scanner.nextLine();
+                    selection = input.toLowerCase().charAt(0);
 
-                if(selection == 'e') {
-                    System.out.println("NUEVO NOMBRE: ");
-                    product.setName(scanner.nextLine());
+                    if(selection == 'e') {
+                        System.out.print("NUEVO PRECIO (deje en blanco si no quiere editar): ");
+                        input = scanner.nextLine();
 
-                    System.out.println("NUEVO PRECIO: ");
-                    product.setPrice(scanner.nextDouble());
+                        if(!input.equals("")) {
+                            product.setPrice(Double.parseDouble(input));
+                        }
 
-                    System.out.println("NUEVO  STOCK: ");
-                    product.setStock(scanner.nextInt());
+                        System.out.print("NUEVO  STOCK (deje en blanco si no quiere editar): ");
+                        input = scanner.nextLine();
 
-                    service.edit(product.getId(), product);
+                        if(!input.equals("")) {
+                            product.setStock(Integer.parseInt(input));
+                        }
 
-                }
-
-            } while(selection != 'e' && selection != 'f');
+                        service.edit(product.getId(), product);
+                    }
+                } while(selection != 'e' && selection != 'f');
+            }
+        } catch (PriceCanNotBeZeroOrLessException e) {
+            System.out.println("El precio no puede ser 0 (cero) o menos.");
+        } catch (StockCanNotBeZeroOrLessException e) {
+            System.out.println("El stock no puede ser 0 (cero) o menos.");
+        } catch (Exception e) {
+            System.out.println("Ups! ha ocurrido un error inesperado.");
         }
-
     }
 }
