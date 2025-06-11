@@ -30,8 +30,6 @@ public class Order {
     }
     //#endregion
 
-    public static int getCount() { return count; }
-
     public int getId() {
         return id;
     }
@@ -70,10 +68,5 @@ public class Order {
         }
 
         System.out.println("└───────────────────────────────────────────────────────────────────────────┘");
-    }
-
-    public String getLabel() {
-        String label = "PEDIDO #" + id;
-        return label;
     }
 }

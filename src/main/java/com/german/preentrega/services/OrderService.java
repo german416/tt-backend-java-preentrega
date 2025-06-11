@@ -16,10 +16,6 @@ public class OrderService {
         orderRepository.add(order);
     }
 
-    private boolean isValidStock(Product product, OrderItem item) {
-        return (product.getStock() >= item.getQuantity());
-    }
-
     // todo este metodo debería ir en la vista. Pendiente de refactor.
     public void print() {
         ArrayList<Order> orders = orderRepository.getAll();

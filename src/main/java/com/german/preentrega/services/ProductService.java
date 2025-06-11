@@ -104,22 +104,4 @@ public class ProductService {
             System.out.println("NO HAY PRODUCTOS CARGADOS... TODAVÍA ;)");
         }
     }
-
-    public boolean validStock(int id, int stock) throws NullObjectException {
-        boolean result = false;
-        Product product = repository
-            .getAll()
-            .stream()
-            .filter(p -> p.getId() == id)
-            .findFirst()
-            .orElse(null);
-
-        if(product != null) {
-            result = (product.getStock() >= stock);
-        } else {
-            throw new NullObjectException();
-        }
-
-        return result;
-    }
 }

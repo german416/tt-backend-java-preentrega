@@ -1,7 +1,5 @@
 package com.german.preentrega.ui.views;
 
-import com.german.preentrega.exceptions.InvalidIdException;
-import com.german.preentrega.exceptions.NullObjectException;
 import com.german.preentrega.models.OrderItem;
 import com.german.preentrega.models.Product;
 import com.german.preentrega.models.Order;
