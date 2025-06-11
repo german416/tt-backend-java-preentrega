@@ -22,11 +22,11 @@ public class AddOrderView {
         this.scanner = scanner;
     }
 
-    public void run() throws NullObjectException, InvalidIdException {
+    public void run() throws Exception {
         showForm();
     }
 
-    private void showForm() throws NullObjectException, InvalidIdException {
+    private void showForm() throws Exception {
         ArrayList<OrderItem> itemList = new ArrayList<OrderItem>();
         productService.print();
         OrderItem item;
@@ -44,7 +44,7 @@ public class AddOrderView {
         }
     }
 
-    private OrderItem getItem() throws NullObjectException, InvalidIdException {
+    private OrderItem getItem() throws Exception {
         OrderItem item = null;
         Product product = null;
 
@@ -75,6 +75,12 @@ public class AddOrderView {
         } while(!isValidStock);
 
         item = new OrderItem(product.getName(), product.getPrice(), productQuantity);
+
+        // todo en otro momento hacer esto de la forma correcta
+        // actualiza stock en producto
+        int newStock = product.getStock() - item.getQuantity();
+        product.setStock(newStock);
+        productService.edit(product.getId(), product);
 
         return item;
     }
