@@ -12,16 +12,41 @@ public class OrderService {
 
     public ArrayList<Order> getAll() { return orderRepository.getAll(); }
 
+    public void add(Order order) {
+        orderRepository.add(order);
+    }
+
+    private boolean isValidStock(Product product, OrderItem item) {
+        return (product.getStock() >= item.getQuantity());
+    }
+
+    // todo este metodo debería ir en la vista. Pendiente de refactor.
+    public void print() {
+        ArrayList<Order> orders = orderRepository.getAll();
+
+        for(Order order : orders) {
+            ArrayList<OrderItem> items = order.getItemList();
+
+            System.out.println("┌──────────────────────────────────────────────────────────────────────┐");
+            System.out.printf("│ %-30s\t%10s\t%10s\t%10s │%n", "NOMBRE", "CANTIDAD", "PRECIOXU","TOTAL");
+            System.out.println("├──────────────────────────────────────────────────────────────────────┤");
+
+            for(OrderItem item : items) {
+                System.out.printf("| %-30s\t%10d\t%10.2f\t%10.2f |%n", item.getName(), item.getQuantity(), item.getPrice(), item.getTotal());
+            }
+
+            System.out.println("├──────────────────────────────────────────────────────────────────────┤");
+            System.out.printf("| %-30s\t%10s\t%10s\t%10.2f |%n", "TOTAL", "", "", order.getTotalPrice());
+            System.out.println("└──────────────────────────────────────────────────────────────────────┘");
+        }
+    }
+
 //    public int newOrder() {
 //        Order order = new Order();
 //        orderRepository.add(order);
 //
 //        return order.getId();
 //    }
-
-    public void add(Order order) {
-        orderRepository.add(order);
-    }
 
 //    public void addItem(Order order, OrderItem item) throws NullObjectException, ProductNotFoundException, OutOfStockException {
 //        if(order == null || item == null) {
@@ -37,8 +62,4 @@ public class OrderService {
 //        // @todo: agregar el item
 //        // @todo: actualizar stock
 //    }
-
-    private boolean isValidStock(Product product, OrderItem item) {
-        return (product.getStock() >= item.getQuantity());
-    }
 }
