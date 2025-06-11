@@ -19,12 +19,12 @@ Diseñar una aplicación en Java que permita registrar, mostrar y gestionar prod
 - ✅ Debe haber una funcionalidad que liste en pantalla todos los productos registrados, mostrando su ID (o posición), Nombre, Precio y Cantidad en Stock.
 - ✅ El ID puede ser autogenerado (por ejemplo, un contador estático) o la posición en la lista.
 
-## 🟠 Búsqueda y actualización de productos
+## ✅ Búsqueda y actualización de productos
 
 - ✅ El sistema permitirá buscar un producto por su nombre o ID.
 - ✅ Si se encuentra el producto, se mostrará su información completa.
 - ✅ Opcionalmente, se podrá actualizar alguno de sus datos (precio o stock), 
-- ❌ validando que los valores sean coherentes (por ejemplo, que el stock no sea negativo).
+- ✅ validando que los valores sean coherentes (por ejemplo, que el stock no sea negativo).
 
 ## ✅ Eliminación de productos
 
@@ -33,8 +33,8 @@ Diseñar una aplicación en Java que permita registrar, mostrar y gestionar prod
 
 ## ✅ Creación de pedidos
 
-- Además de manejar productos, se sugiere agregar la clase Pedido (o Orden) que contenga:
-  - 🟡 Una lista de productos asociados.
+- ✅ Además de manejar productos, se sugiere agregar la clase Pedido (o Orden) que contenga:
+  - ✅ Una lista de productos asociados.
   - ✅ Cantidad deseada de cada producto (por ejemplo, usando un objeto intermedio LineaPedido o similar).
 - ✅ El sistema debe permitir crear un pedido nuevo:
   - ✅ Solicitar al usuario qué productos desea y en qué cantidad 
