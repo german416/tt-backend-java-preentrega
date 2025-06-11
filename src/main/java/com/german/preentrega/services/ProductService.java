@@ -86,6 +86,7 @@ public class ProductService {
         return Arrays.stream(idList).anyMatch(n -> n == id);
     }
 
+    // todo este metodo debería ir en la vista. Pendiente de refactor.
     public void print() {
         ArrayList<Product> products = getAll();
 
